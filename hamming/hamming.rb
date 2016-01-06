@@ -2,18 +2,10 @@ class Hamming
     VERSION = 1
 
     def self.compute a, b
-        count = 0
+        raise ArgumentError if a.length != b.length
 
-        if a.length != b.length
-            raise ArgumentError, "Strands should be of equal length"
+        a.chars.zip(b.chars).count do |x, y|
+            x != y
         end
-
-        for i in 0..a.length
-            if a[i] != b[i]
-                count += 1
-            end
-        end
-
-        count
     end
 end
