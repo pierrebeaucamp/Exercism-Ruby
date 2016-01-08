@@ -8,10 +8,6 @@ class Raindrops
         x % 5 == 0 ? output += "Plang" : nil
         x % 7 == 0 ? output += "Plong" : nil
 
-        if output == ""
-            output += x.to_s
-        end
-
-        output
+        output == "" ? x.to_s : output
     end
 end
