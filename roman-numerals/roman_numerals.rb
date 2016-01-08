@@ -2,17 +2,16 @@ class Fixnum
     VERSION = 1
 
     def to_roman
-        ("I" * self).gsub(/(I)\1{999}/, "M")
-                    .gsub(/(I)\1{899}/, "CM")
-                    .gsub(/(I)\1{499}/, "D")
-                    .gsub(/(I)\1{399}/, "CD")
-                    .gsub(/(I)\1{99}/ , "C")
-                    .gsub(/(I)\1{89}/ , "XC")
-                    .gsub(/(I)\1{49}/ , "L")
-                    .gsub(/(I)\1{39}/ , "XL")
-                    .gsub(/(I)\1{9}/  , "X")
-                    .gsub(/(I)\1{8}/  , "IX")
-                    .gsub(/(I)\1{4}/  , "V")
-                    .gsub(/(I)\1{3}/  , "IV")
+        num = self
+        roman_digits = {
+            1000 => "M", 900 => "CM", 500 => "D", 400 => "CD", 100 => "C",
+            90 => "XC", 50 => "L", 40 => "XL", 10 => "X", 9 => "IX", 5 => "V",
+            4 => "IV", 1 => "I"
+        }
+
+        roman_digits.inject("") do |out, (decimal, roman)|
+            factor, num = num.divmod(decimal)
+            out += roman * factor
+        end
     end
 end
