@@ -11,7 +11,7 @@ class Fixnum
 
         roman_digits.inject("") do |out, (decimal, roman)|
             factor, num = num.divmod(decimal)
-            out += roman * factor
+            out << roman * factor
         end
     end
 end
