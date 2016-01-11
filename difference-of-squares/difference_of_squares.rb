@@ -10,7 +10,7 @@ class Squares
     end
 
     def square_of_sums
-        (1..@x).inject do |sum, n| sum + n end ** 2
+        (@x * (@x + 1) / 2) ** 2
     end
 
     def sum_of_squares
