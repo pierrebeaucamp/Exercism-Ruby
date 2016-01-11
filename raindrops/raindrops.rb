@@ -4,9 +4,9 @@ class Raindrops
     def self.convert x
         output = ""
 
-        x % 3 == 0 ? output += "Pling" : nil
-        x % 5 == 0 ? output += "Plang" : nil
-        x % 7 == 0 ? output += "Plong" : nil
+        output << "Pling" if x % 3 == 0
+        output << "Plang" if x % 5 == 0
+        output << "Plong" if x % 7 == 0
 
         output == "" ? x.to_s : output
     end
